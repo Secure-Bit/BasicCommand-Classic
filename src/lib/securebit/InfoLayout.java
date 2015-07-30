@@ -8,8 +8,8 @@ import org.bukkit.command.CommandSender;
 
 public class InfoLayout {
 
-	protected String colorPrimaer;
-	protected String colorSecundaer;
+	protected String colorPrimary;
+	protected String colorSecondary;
 	protected String colorImportant;
 	protected String colorPositiv;
 	protected String colorNegative;
@@ -22,8 +22,8 @@ public class InfoLayout {
 	}
 	
 	public InfoLayout(String prefix) {
-		this.colorPrimaer = "§8";
-		this.colorSecundaer = "§3";
+		this.colorPrimary = "§8";
+		this.colorSecondary = "§3";
 		this.colorImportant = "§b";
 		this.colorPositiv = "§f";
 		this.colorNegative = "§c";
@@ -33,11 +33,11 @@ public class InfoLayout {
 	}
 	
 	public void message(CommandSender sender, String text) {
-		sender.sendMessage(this.prefix + this.format(this.colorSecundaer + text));
+		sender.sendMessage(this.prefix + this.format(this.colorSecondary + text));
 	}
 	
 	public void broadcast(String text) {
-		Bukkit.broadcastMessage(this.prefix + this.format(this.colorSecundaer + text));
+		Bukkit.broadcastMessage(this.prefix + this.format(this.colorSecondary + text));
 	}
 
 	public void begin() {
@@ -61,11 +61,11 @@ public class InfoLayout {
 	
 	public void barrier() {
 		String barrier = "=======================================================";
-		this.transaction.add(this.prefix + this.colorPrimaer + barrier);
+		this.transaction.add(this.prefix + this.colorPrimary + barrier);
 	}
 	
 	public void line(String text) {
-		this.transaction.add(this.prefix + this.colorSecundaer + this.format(text));
+		this.transaction.add(this.prefix + this.colorSecondary + this.format(text));
 	}
 	
 	public void suggestion(String commandLine, String description) {
@@ -73,8 +73,8 @@ public class InfoLayout {
 			description = this.format(description);
 		}
 		
-		this.transaction.add(this.colorSecundaer + "/" + commandLine + 
-				(description == null || description.isEmpty() || description.trim().isEmpty() ? "" : this.colorPrimaer + " - " + this.colorSecundaer + description));
+		this.transaction.add(this.colorSecondary + "/" + commandLine + 
+				(description == null || description.isEmpty() || description.trim().isEmpty() ? "" : this.colorPrimary + " - " + this.colorSecondary + description));
 	}
 
 
@@ -91,9 +91,9 @@ public class InfoLayout {
 	}
 	
 	public String format(String text) {
-		text = text.replaceAll("\\*(.+)\\*", this.colorImportant + "$1" + this.colorSecundaer);
-		text = text.replaceAll("-(.+)-", this.colorNegative + "$1" + this.colorSecundaer);
-		text = text.replaceAll("\\+(.+)\\+", this.colorPositiv + "$1" + this.colorSecundaer);
+		text = text.replaceAll("\\*(.+)\\*", this.colorImportant + "$1" + this.colorSecondary);
+		text = text.replaceAll("-(.+)-", this.colorNegative + "$1" + this.colorSecondary);
+		text = text.replaceAll("\\+(.+)\\+", this.colorPositiv + "$1" + this.colorSecondary);
 		text = text.replace("\\pre", this.prefix);
 		return text;
 	}
